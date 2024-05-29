@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.excoder"
-version = "0.0.1-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_21
@@ -41,4 +41,11 @@ openApiValidate {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.bootJar {
+	archiveFileName.set("product-service-1.0-SNAPSHOT.jar")
+}
+tasks.named<Jar>("jar") {
+	enabled = false
 }
