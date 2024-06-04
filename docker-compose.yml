@@ -3,7 +3,7 @@ services:
   product-service:
     image: product-service:latest
     ports:
-      - "8080:8080"
+      - "8180:8080"
     depends_on:
       - postgres
     environment:
