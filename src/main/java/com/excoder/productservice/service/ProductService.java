@@ -53,7 +53,7 @@ public class ProductService {
         return ProductRepository.findByName(name);
     }
 
-    public List<Product> findByCreatedDateAfter(LocalDate date) {
-        return ProductRepository.findByCreatedDateAfter(date);
+    public List<Product> findByCreatedDateAfter(LocalDate createdDate) {
+        return ProductRepository.findByCreatedDateAfter(createdDate);
     }
 }

@@ -13,6 +13,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByName(String name);
 
-    @Query("SELECT p FROM Product p WHERE p.created_at > :date")
-    List<Product> findByCreatedDateAfter(@Param("date") LocalDate date);
+    @Query("SELECT p FROM Product p WHERE p.createdDate > :date")
+    List<Product> findByCreatedDateAfter(@Param("date") LocalDate createdDate);
 }

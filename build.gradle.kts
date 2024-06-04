@@ -22,6 +22,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.2.5")
 	implementation("org.postgresql:postgresql")
 	implementation("org.springframework.kafka:spring-kafka:3.1.4")
+	implementation("org.projectlombok:lombok")
+	compileOnly("org.springframework.boot:spring-boot-devtools")
 
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

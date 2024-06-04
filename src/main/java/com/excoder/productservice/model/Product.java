@@ -1,9 +1,6 @@
 package com.excoder.productservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,17 +13,18 @@ public class Product {
     private String name;
     private String description;
     private BigDecimal price;
-    private LocalDate created_at;
+    @Column(name = "created_at")
+    private LocalDate createdDate;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, BigDecimal price, LocalDate created_at) {
+    public Product(Integer id, String name, String description, BigDecimal price, LocalDate createdDate) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.created_at = created_at;
+        this.createdDate = createdDate;
     }
 
     public Integer getId() {
@@ -61,12 +59,12 @@ public class Product {
         this.price = price;
     }
 
-    public LocalDate getCreated_at() {
-        return created_at;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreated_at(LocalDate created_at) {
-        this.created_at = created_at;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 }
 
