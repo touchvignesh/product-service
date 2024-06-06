@@ -1,7 +1,10 @@
 package com.excoder.productservice.model;
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -10,14 +13,15 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
     private String description;
     private BigDecimal price;
+
     @Column(name = "created_at")
     private LocalDate createdDate;
 
-    public Product() {
-    }
+    public Product() {}
 
     public Product(Integer id, String name, String description, BigDecimal price, LocalDate createdDate) {
         this.id = id;
@@ -67,4 +71,3 @@ public class Product {
         this.createdDate = createdDate;
     }
 }
-
