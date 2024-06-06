@@ -1,5 +1,7 @@
 package com.excoder.productservice.controller;
 
+import com.excoder.productservice.component.ProductConverter;
+import com.excoder.productservice.dto.ProductDTO;
 import com.excoder.productservice.model.Product;
 import com.excoder.productservice.service.ProductService;
 import java.time.LocalDate;
@@ -27,6 +29,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    ProductConverter productConverter;
+
     @GetMapping("/list/all")
     public List<Product> findAll() {
         return productService.findAll();
@@ -40,14 +45,14 @@ public class ProductController {
     // create a product
     @ResponseStatus(HttpStatus.CREATED) // 201
     @PostMapping("/add")
-    public Product create(@RequestBody Product product) {
-        return productService.save(product);
+    public ProductDTO create(@RequestBody ProductDTO productDTO) {
+        return productService.save(productDTO);
     }
 
     // update a product
     @PutMapping("/update")
-    public Product update(@RequestBody Product product) {
-        return productService.save(product);
+    public ProductDTO update(@RequestBody ProductDTO productDTO) {
+        return productService.save(productDTO);
     }
 
     // delete a product

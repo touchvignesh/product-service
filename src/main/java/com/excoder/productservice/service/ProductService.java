@@ -1,5 +1,7 @@
 package com.excoder.productservice.service;
 
+import com.excoder.productservice.component.ProductConverter;
+import com.excoder.productservice.dto.ProductDTO;
 import com.excoder.productservice.model.Product;
 import com.excoder.productservice.repository.ProductRepository;
 import java.time.LocalDate;
@@ -26,6 +28,9 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    ProductConverter productConverter;
+
     public List<Product> findAll() {
         return productRepository.findAll();
     }
@@ -34,8 +39,9 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public Product save(Product product) {
-        productRepository.save(product);
+    public ProductDTO save(ProductDTO productDTO) {
+        Product product = productConverter.convertProductDtoToEntity(productDTO);
+        product = productRepository.save(product);
         var successMessage = kafkaTemplate.send(productTopic, product);
         successMessage.whenComplete((sendResult, exception) -> {
             if (exception != null) {
@@ -45,7 +51,7 @@ public class ProductService {
             }
             log.info(String.valueOf(sendResult));
         });
-        return product;
+        return productConverter.convertProductEntityToDto(product);
     }
 
     public void deleteById(Integer id) {

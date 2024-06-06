@@ -32,12 +32,14 @@ public class MainApplication {
     public CommandLineRunner demoCommandLineRunner() {
         return args -> {
             log.info("Running");
-            Product p1 = new Product(1, "iPhone 11", "Silver", BigDecimal.valueOf(39999.00), LocalDate.of(2023, 8, 31));
-            Product p2 = new Product(2, "iPhone 12", "Gold", BigDecimal.valueOf(49999.00), LocalDate.of(2023, 10, 31));
+            Product p1 =
+                    new Product(1001, "iPhone 11", "Silver", BigDecimal.valueOf(39999.00), LocalDate.of(2023, 8, 31));
+            Product p2 =
+                    new Product(1002, "iPhone 12", "Gold", BigDecimal.valueOf(49999.00), LocalDate.of(2023, 10, 31));
             Product p3 = new Product(
-                    3, "iPhone 13", "Midnight Black", BigDecimal.valueOf(59999.00), LocalDate.of(2023, 12, 31));
-            Product p4 =
-                    new Product(4, "iPhone 14", "Rose Gold", BigDecimal.valueOf(69999.00), LocalDate.of(2024, 5, 30));
+                    1003, "iPhone 13", "Midnight Black", BigDecimal.valueOf(59999.00), LocalDate.of(2023, 12, 31));
+            Product p4 = new Product(
+                    1004, "iPhone 14", "Rose Gold", BigDecimal.valueOf(69999.00), LocalDate.of(2024, 5, 30));
 
             productRepository.saveAll(List.of(p1, p2, p3, p4));
         };
