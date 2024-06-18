@@ -57,7 +57,6 @@ tasks.named<Jar>("jar") {
 spotless {
     java {
         target("**/*.java")
-        // Commit for new pull request
         targetExclude("${layout.buildDirectory}/**/*.java")
         replaceRegex("Remove wildcard import statements", "import\\s+(?:static\\s+)?[^\\*\\s]+\\*;(\\r\\n|\\r|\\n)", "$1")
         toggleOffOn()
