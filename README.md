@@ -6,4 +6,7 @@
 <li>About the Project</li>
 <li>Scope</li>
 <li>Tools Used</li>
+<li>Test Framework</li>
+<li>Deployment Option</li>
+<li>Regression</li>
 <li>Test Framework</li></ol>
