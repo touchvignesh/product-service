@@ -7,4 +7,5 @@
 <li>Scope</li>
 <li>Tools Used</li>
 <li>Test Framework</li>
-<li>Deployment Option</li></ol>
+<li>Deployment Option</li>
+</ol>
