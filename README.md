@@ -10,5 +10,4 @@
 <li>Deployment Option</li>
 <li>Regression</li>
 <li>Smoke Test</li>
-<li>Performance Test</li>
 </ol>
