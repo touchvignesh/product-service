@@ -15,4 +15,5 @@
 <li>Unit Test</li>
 <li>Documentation</li>
 <li>Demo</li>
+<li>Go-Live></li>
 </ol>
