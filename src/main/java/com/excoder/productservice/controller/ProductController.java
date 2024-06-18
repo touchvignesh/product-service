@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-// @CrossOrigin
 @RestController
 @RequestMapping("/product")
 public class ProductController {
