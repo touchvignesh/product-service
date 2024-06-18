@@ -9,4 +9,4 @@
 <li>Test Framework</li>
 <li>Deployment Option</li>
 <li>Regression</li>
-<li>Test Framework</li></ol>
+</ol>
