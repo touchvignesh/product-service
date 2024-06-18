@@ -12,4 +12,5 @@
 <li>Smoke Test</li>
 <li>Performance Test</li>
 <Li>Functional Test</Li>
+<li>Documentation</li>
 </ol>
