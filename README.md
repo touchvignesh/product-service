@@ -12,5 +12,4 @@
 <li>Smoke Test</li>
 <li>Performance Test</li>
 <Li>Functional Test</Li>
-<li>Unit Test</li>
 </ol>
