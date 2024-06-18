@@ -9,4 +9,5 @@
 <li>Test Framework</li>
 <li>Deployment Option</li>
 <li>Regression</li>
+<li>Smoke Test</li>
 </ol>
