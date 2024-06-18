@@ -8,4 +8,5 @@
 <li>Tools Used</li>
 <li>Test Framework</li>
 <li>Deployment Option</li>
+<li>Regression</li>
 </ol>
