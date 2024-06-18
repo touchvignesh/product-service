@@ -11,4 +11,5 @@
 <li>Regression</li>
 <li>Smoke Test</li>
 <li>Performance Test</li>
+<li>Functional Test</li>
 </ol>
