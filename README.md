@@ -1,7 +1,7 @@
 <html><h1>Readme</h1></html>
 <p>This is the landing page of this project</p>
 
-<h3>Sub Sections</h3>
+<h3>Subsections</h3>
 <ol>
 <li>About the Project</li>
 <li>Scope</li>
@@ -9,4 +9,4 @@
 <li>Test Framework</li>
 <li>Deployment Option</li>
 <li>Regression</li>
-</ol>
+<li>Test Framework</li></ol>
