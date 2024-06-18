@@ -14,4 +14,5 @@
 <Li>Functional Test</Li>
 <li>Unit Test</li>
 <li>Documentation</li>
+<li>Demo</li>
 </ol>
