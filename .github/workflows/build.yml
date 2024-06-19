@@ -17,7 +17,7 @@ jobs:
           POSTGRES_PASSWORD: postgres123
           POSTGRES_DB: product-service
         ports:
-          - 5432/tcp
+          - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     permissions:
       contents: read
@@ -36,7 +36,7 @@ jobs:
       uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
     - name: Build with Gradle Wrapper
-      run: ./gradlew build -x test
+      run: ./gradlew build
 
   dependency-submission:
 
