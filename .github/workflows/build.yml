@@ -135,6 +135,15 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gradle-build-artifacts
+          path: build/libs
+          
+      - name: Display structure of downloaded files
+        run: ls -R
+
       - name: Build, tag, and push the image to Amazon ECR
         id: build-image
         env:
