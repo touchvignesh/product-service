@@ -144,7 +144,7 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
 
-      - name: Build, tag, and push the image to Amazon ECR
+      - name: Create Amazon ECR Repo
         id: ecr
         uses: int128/create-ecr-repository-action@v1
         with:
@@ -157,8 +157,9 @@ jobs:
           images: ${{ steps.ecr.outputs.repository-uri }}
 
       - name: Build, tag, and push the image to Amazon ECR
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
+          context: .
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
