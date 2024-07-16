@@ -127,3 +127,11 @@ jobs:
 
      - name: Generate and submit dependency graph
        uses: gradle/actions/dependency-submission@v3
+
+  deploy:
+    name: Deploy to AWS App Runner
+    needs: gradle-build
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
