@@ -146,6 +146,7 @@ jobs:
 
       - name: Deploy
         id: deploy-apprunner
+        if: false
         uses: awslabs/amazon-app-runner-deploy@main
         with:
           service: app-runner-git-deploy-service
@@ -154,6 +155,6 @@ jobs:
           cpu: 1
           memory: 2
           wait-for-service-stability-seconds: 1200
-          
+
       - name: App Runner URL
         run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
