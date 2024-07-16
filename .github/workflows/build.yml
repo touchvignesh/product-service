@@ -149,11 +149,11 @@ jobs:
         uses: awslabs/amazon-app-runner-deploy@main
         with:
           service: app-runner-git-deploy-service
-          image: ${{ docker-build.steps.push.outputs.image }}
-          access-role-arn: ${{ secrets.ROLE_ARN }}
-          region: ${{ secrets.AWS_REGION }}
+          image: sample
+          region: ${{ vars.AWS_REGION }}
           cpu: 1
           memory: 2
           wait-for-service-stability-seconds: 1200
+          
       - name: App Runner URL
         run: echo "App runner URL ${{ steps.deploy-apprunner.outputs.service-url }}"
