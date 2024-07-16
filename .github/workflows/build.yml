@@ -60,7 +60,7 @@ jobs:
            build/libs
 
   docker-build-gcr:
-    name: Docker build
+    name: Docker build and push to GCR
     needs: gradle-build
     runs-on: ubuntu-latest
     permissions:
@@ -111,7 +111,7 @@ jobs:
           push-to-registry: true
 
   docker-build-ecr:
-    name: Docker build
+    name: Docker build and push to ECR
     needs: gradle-build
     runs-on: ubuntu-latest
     permissions:
@@ -140,21 +140,28 @@ jobs:
         with:
           name: gradle-build-artifacts
           path: build/libs
-          
+
       - name: Display structure of downloaded files
         run: ls -R
 
       - name: Build, tag, and push the image to Amazon ECR
-        id: build-image
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ${{ github.repository }}
-          IMAGE_TAG: latest
-        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          echo "Pushing image to ECR..."
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        id: ecr
+        uses: int128/create-ecr-repository-action@v1
+        with:
+          repository: ${{ github.repository }}
+
+      - name: Extract metadata
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ steps.ecr.outputs.repository-uri }}
+
+      - name: Build, tag, and push the image to Amazon ECR
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
 
   dependency-submission:
     runs-on: ubuntu-latest
