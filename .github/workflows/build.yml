@@ -130,7 +130,7 @@ jobs:
 
   deploy:
     name: Deploy to AWS App Runner
-    needs: gradle-build
+    needs: [gradle-build, docker-build]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
