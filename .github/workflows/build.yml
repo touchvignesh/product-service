@@ -51,6 +51,7 @@ jobs:
 
   docker-build:
     name: Docker build
+    needs: gradle-build
     runs-on: ubuntu-latest
     permissions:
       contents: read
