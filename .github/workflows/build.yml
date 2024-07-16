@@ -64,9 +64,10 @@ jobs:
     needs: gradle-build
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
       id-token: write
+      contents: read
+      attestations: write
+      packages: write
 
     steps:
       - name: Checkout Code
