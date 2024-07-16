@@ -183,28 +183,20 @@ jobs:
        uses: gradle/actions/dependency-submission@v3
 
   deploy:
-    name: Deploy to AWS App Runner
+    name: Pull from ECR and Deploy to AWS App Runner
     needs: [gradle-build, docker-build-ecr]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
     steps:
-      - name: Configure AWS credentials
-        id: aws-credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ vars.AWS_REGION }}
-
       - name: Deploy
         id: deploy-apprunner
-        if: false
         uses: awslabs/amazon-app-runner-deploy@main
         with:
-          service: app-runner-git-deploy-service
-          image: sample
+          service: app-runner-image-deploy-service
+          image: ${{ secrets.ECR_ARN }}
+          access-role-arn: ${{ secrets.ROLE_ARN }}
           region: ${{ vars.AWS_REGION }}
           cpu: 1
           memory: 2
