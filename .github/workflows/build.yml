@@ -51,7 +51,14 @@ jobs:
         POSTGRES_DATABASE_USER: product_service_dba
         POSTGRES_DATABASE_PASSWORD: postgres123
         POSTGRES_DATABASE_NAME: product-service
-        
+
+     - name: Upload build artifacts
+       uses: actions/upload-artifact@v4
+       with:
+         name: gradle-build-artifacts
+         path: |
+           build
+
   docker-build:
     name: Docker build
     needs: gradle-build
